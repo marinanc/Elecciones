@@ -1,8 +1,39 @@
-body {
-  padding: 50px;
+body, html {
+  margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
 }
 
 a {
   color: #00B7FF;
+}
+
+.bg-vote {
+  /* Solamente afecta a la imagen de fondo de bg-vote */
+  background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("../images/vote_3.png");
+  
+  /*Para que ocupe toda la página */
+  height: 100%;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+.index-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /*Centrar*/
+  color: white;
+}
+
+.index-text h1 {
+  background-color: #007bff;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
 }

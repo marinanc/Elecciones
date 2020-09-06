@@ -10,7 +10,7 @@ var CandidatoSchema = new mongoose.Schema({
         minlength: 5,
         unique: true
     },
-    nombreCantidado: {
+    nombreCandidato: {
         type: String,
         minlength: 5
     },

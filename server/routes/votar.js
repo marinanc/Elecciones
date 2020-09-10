@@ -17,15 +17,30 @@ router.post('/', function(req, res, next){
             sexo: req.body.sexo
         }
     );
-    votante.save(function(err, response){
-        if (err){
-            return res.render('votar', { title: 'Elecciones' , error: err});
+    var dniVotante = req.body.dni
+    if(Votante.find({ dni: dniVotante }, function(err, response){
+        if (err) {
+            res.render('votar', { title: 'Elecciones', error: err.message });
         }
-        if (response == null){
-            return res.render('votar', { title: Elecciones, error: "No se pudo registrar al votante..."})
+        if (response != null) {
+            res.render('votar', { title: 'Elecciones', error: 'Ya se ha votado con el DNI ingresado'});
         }
-        res.redirect('/');
-    });
+        else {
+            votante.save(function (err, response) {
+                res.redirect('seleccionarCandidato');
+            });
+        }
+    }));
+    // votante.save(function(err, response){
+    //     if (err){
+    //         return res.render('votar', { title: 'Elecciones' , error: err});
+    //     }
+    //     if (response == null){
+    //         return res.render('votar', { title: Elecciones, error: "No se pudo registrar al votante..."})
+    //     }
+    //     res.redirect('/');
+    // });
+    
     // var filterDni = { dni: req.body.dni}
     // Votante.find(filterDni, function(err, votantes){
     //     if (err != null){

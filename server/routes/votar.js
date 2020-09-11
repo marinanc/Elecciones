@@ -22,11 +22,17 @@ router.post('/', function(req, res, next){
         if (err) {
             res.render('votar', { title: 'Elecciones', error: err.message });
         }
-        if (response != null) {
-            res.render('votar', { title: 'Elecciones', error: 'Ya se ha votado con el DNI ingresado'});
+        if (response != "") {
+            res.render('votar', { title: 'Elecciones', error: 'Ya se ha votado con el DNI ingresado. ' + response});
         }
         else {
             votante.save(function (err, response) {
+                if (err) {
+                    return res.render('votar', { title: 'Elecciones' , error: err.message});
+                }
+                if (response == null){
+                    return res.render('votar', { title: Elecciones, error: "No se pudo registrar al votante..."})
+                }
                 res.redirect('seleccionarCandidato');
             });
         }

@@ -1,0 +1,45 @@
+<% include header %>
+<div class="container mt-5">
+  <div class="alert alert-danger 
+    <% if(!locals.error){ %>
+      d-none
+    <% } %>">
+    <p id="error"><%= locals.error %></p>
+  </div>
+  <form action="/votar/elegirCandidato" method="POST">
+    <% candidatos.forEach((item) => { %>
+      <section>
+          <div class="container py-3">
+            <div class="card text-center">
+              <div class="row ">
+                <div class="col-md-4">
+                    <img src="<%=item.imagenPartido%>">
+                  </div>
+                  <div class="col-md-8 px-3 align-items-center d-flex justify-content-center">
+                    <div class="card-block px-3">
+                      <h4 class="card-title"><%=item.nombrePartido%></h4>
+                      <p class="card-text"><%=item.nombreCandidato%></p>
+                      <!-- <a href="#" class="btn btn-primary">Read More</a> -->
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="_id" id="_id" value="<%= item._id %>">
+                        <label class="form-check-label" for="_id">
+                          Elegir este candidato
+                        </label>
+                      </div>
+                      <!-- <input name="_id" value="<% candidatos._id %>" class="d-none" type="text"> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section>
+      <br>
+      <% }) %>
+      <input type="text" id="dni" name="dni" class="d-none" value="<%= dni %>">
+      <!-- Botón votar -->
+      <button class="btn btn-info btn-block" type="submit">VOTAR</button>
+      <button class="btn btn-danger btn-block" type="submit">CANCELAR</button>
+  </form>
+</div>
+
+<% include footer %>

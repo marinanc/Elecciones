@@ -9,7 +9,7 @@ const bluebird = require('bluebird');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var votarRouter = require('./routes/votar');
-var candidatosRouter = require('./routes/candidatos');
+//var candidatosRouter = require('./routes/candidatos');
 
 var app = express();
 
@@ -43,18 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/votar', votarRouter);
-app.use('/seleccionarCandidato', candidatosRouter);
-
-// Conexión con mongodb
-// mongoose.connect("mongodb://localhost:27017/elecciones", {
-//   promiseLibrary = bluebird,
-//   useNewUrlParser = true,
-//   useUnifiedTopology = true
-// }, function(err){
-//   console.log("Error al conectarse con mongo: " + err.message);
-// }).then(function(res){
-//   console.log("Conectado a mongodb...");
-// });
+//app.use('/seleccionarCandidato', candidatosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

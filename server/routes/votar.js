@@ -103,10 +103,29 @@ router.post('/elegirCandidato', function (req, res, next){
                             log.error("error");
                         }
                     });
-                    res.render('/votar', {title:'Elecciones'});
+                    res.render('/porcentajeVotos', { title:'Elecciones' });
                 }
             });
         }
+    });
+});
+
+/* GET porcentaje de votos por candidato */
+router.get('/porcentajeVotos', function(req, res, next){
+    var totalVotos = 0
+    Candidato.find({}, null, { sort:{ cantidadVotos:"desc" } }, function(err, candidatos){
+        if(err != null){
+            res.status(400).send(new Error("Error: " + err.message));
+        }
+        if(candidatos == null){
+            res.status(404).send(new Error("No hay candidatos..."));
+        }
+        else {
+            candidatos.forEach((item) => {
+                totalVotos = totalVotos + parseFloat(item.cantidadVotos)
+            });
+        }
+        res.render('porcentajeVotos', { title: 'Elecciones', candidatos:candidatos, totalVotos: totalVotos });
     });
 });
 

@@ -71,39 +71,41 @@ router.post('/elegirCandidato', function (req, res, next){
     });
     Votante.findOne({ dni: req.body.dni }, function(err, response){
         if (err) {
-            log.error("error")
+            next(err);
+            //log.error("error")
             // res.render('elegirCandidato', { title: 'Elecciones', error: err.message });
+            //res.redirect('/votar/elegirCandidato/' + dni, );
         }
         if (response != null && response.estadoVoto == true) {
-            log.error("ya se voto con ese dni")
-            // res.render('elegirCandidato', { title: 'Elecciones', error: 'Ya se ha votado con el DNI ingresado. ' });
+            //log.error("ya se voto con ese dni")
+            res.render('votar', { title: 'Elecciones', error: 'Ya se ha votado con el DNI ingresado. ' });
         }
         else {
             Candidato.findById(req.body._id, function (err, rescandidato){
                 if (err) {
-                    res.render('elegirCandidato', { title: 'Elecciones', error: err.message });
+                    next(err)
                 }
                 if (rescandidato == null) {
-                    res.render('elegirCandidato', { title: 'Elecciones', error: 'No existe el candidato ' });
+                    res.render('votar', { title: 'Elecciones', error: 'No existe el candidato ' });
                 }
                 else{
                     Votante.update({_id: response._id}, { estadoVoto: true }, function (err,res){
                         if(err){
-                            log.error("error");
+                            next(err);
                         }
                         if(res==null){
-                            log.error("error");
+                            res.render('votar', { title: 'Elecciones', error: 'DNI incorrecto' });
                         }
                     });
                     Candidato.update({_id: rescandidato._id}, { cantidadVotos: rescandidato.cantidadVotos + 1 }, function(err, res){
                         if(err){
-                            log.error("error");
+                           next(err);
                         }
                         if(res==null){
-                            log.error("error");
+                            res.render('votar', { title: 'Elecciones', error: 'No existe el candidato' });
                         }
                     });
-                    res.render('/porcentajeVotos', { title:'Elecciones' });
+                    res.redirect('/votar/porcentajeVotos');
                 }
             });
         }

@@ -14,20 +14,20 @@
                 </div>
                 <form class="text-center border border-light p-5" action="/votar" method="POST">
 
-                    <input type="text" id="nombre" name="nombre" class="form-control mb-4" placeholder="Nombre" minlength="2" onkeypress="return lettersOnly()" required>
-                    <input type="text" id="apellido" name="apellido" class="form-control mb-4" placeholder="Apellido" onkeypress="return lettersOnly()" minlength="2" required>
+                    <input type="text" id="nombre" name="nombre" class="form-control mb-4 disableButton" placeholder="Nombre" minlength="2" onkeypress="return lettersOnly()" required>
+                    <input type="text" id="apellido" name="apellido" class="form-control mb-4 disableButton" placeholder="Apellido" onkeypress="return lettersOnly()" minlength="2" required>
 
-                    <input type="text" id="dni" name="dni" class="form-control mb-4" placeholder="Número de DNI" onkeypress="return isNumberKey(event)" minlength="7" maxlength="8" required>
+                    <input type="text" id="dni" name="dni" class="form-control mb-4 disableButton" placeholder="Número de DNI" onkeypress="return isNumberKey(event)" minlength="7" maxlength="8" required>
 
                     <label>Sexo</label>
-                    <select class="browser-default custom-select mb-4" id="sexo" name="sexo" required>
-                        <option value="" selected disabled>Elegir una opción...</option>
+                    <select class="browser-default custom-select mb-4 disableButton" id="sexo" name="sexo" required>
+                        <option value="" hidden selected>Elegir una opción...</option>
                         <option value="Femenino">Femenino</option>
                         <option value="Masculino">Masculino</option>
                     </select>
 
                     <!-- Botón votar -->
-                    <button class="btn btn-info btn-block" type="submit">VOTAR</button>
+                    <button class="btn btn-info btn-block" id="submit-votar" disabled="disabled" type="submit">VOTAR</button>
                     <button class="btn btn-danger btn-block" type="reset">CANCELAR</button>
 
                 </form>

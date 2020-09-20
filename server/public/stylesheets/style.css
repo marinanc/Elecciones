@@ -37,3 +37,65 @@ a {
   font-size: 25px;
   letter-spacing: 10px;
 }
+
+/* Card */
+/* #card-candidato {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+#card-candidato:hover {
+  box-shadow: 0 8px 16px 0 lightgreen;
+  background-color: lightgreen;
+  cursor: pointer;
+}
+
+#card-candidato:checked {
+  box-shadow: 0 8px 16px 0 lightgreen;
+  background-color: lightgreen;
+}
+
+.img-candidato {
+  border-radius: 5px 5px 5px 5px;
+}  */
+
+/* Card selection */
+#elegirCandidato {
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+.card-input-element {
+  display: none;
+}
+
+.card-input {
+  margin: 10px;
+  padding: 00px;
+}
+
+.card-input:hover {
+  cursor: pointer;
+}
+
+.card-input-element:checked + .card-input {
+   box-shadow: 0 0 1px 1px #2ecc71;
+}
+
+/* Card percentage */
+#card-porcentaje {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+#img-porcentaje{
+  border-radius: 5px 5px 5px 5px;
+}
+
+#section-porcentaje:first-of-type{
+  background-color: lightgreen;
+}

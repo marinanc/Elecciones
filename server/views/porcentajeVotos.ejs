@@ -1,21 +1,25 @@
 <% include header %>
-<div class="container mt-5">
+<div class="card mt-md-5 mt-5">
+  <div class="card-header bg-light text-center">
+    <strong>TOTAL DE VOTOS: <%=totalVotos%></strong>
+  </div>
 <% candidatos.forEach((item) => { %>
-  <section>
-    <div class="container py-3">
-      <div class="card text-center">
+  <section id="section-porcentaje">
+    <div class="container py-3 col-md-8 col-sm-12">
+      <div class="card text-center" id="card-porcentaje">
         <div class="row ">
           <div class="col-md-4">
-              <img src="<%=item.imagenPartido%>">
+              <img id="img-porcentaje" style="width: 100%;" src="<%=item.imagenPartido%>">
             </div>
             <div class="col-md-8 px-3 align-items-center d-flex justify-content-center">
-              <div class="card-block px-3">
+              <div class="card-block px-3 col-md-12">
                 <h4 class="card-title"><%=item.nombrePartido%></h4>
                 <p class="card-text"><%=item.nombreCandidato%></p>
                 <!-- <a href="#" class="btn btn-primary">Read More</a> -->
-                <div class="progress">
-                  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" id="progressBarCandidato" style="width: <%=item.cantidadVotos * 100 / totalVotos %>%">Votos: <%= item.cantidadVotos %> </div>
+                <div class="progress" style="height: 35px;">
+                  <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" id="progressBarCandidato" style="width: <%=item.cantidadVotos * 100 / totalVotos %>%">Votos: <%= item.cantidadVotos %> </div>
                 </div>
+                <p class="card-text"><%=(item.cantidadVotos * 100 / totalVotos).toFixed(2) %> %</p>
               </div>
             </div>
           </div>

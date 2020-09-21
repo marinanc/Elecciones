@@ -72,12 +72,10 @@ router.post('/elegirCandidato', function (req, res, next){
     Votante.findOne({ dni: req.body.dni }, function(err, response){
         if (err) {
             next(err);
-            //log.error("error")
             // res.render('elegirCandidato', { title: 'Elecciones', error: err.message });
             //res.redirect('/votar/elegirCandidato/' + dni, );
         }
         if (response != null && response.estadoVoto == true) {
-            //log.error("ya se voto con ese dni")
             res.render('votar', { title: 'Elecciones', error: 'Ya se ha votado con el DNI ingresado. ' });
         }
         else {
@@ -105,29 +103,10 @@ router.post('/elegirCandidato', function (req, res, next){
                             res.render('votar', { title: 'Elecciones', error: 'No existe el candidato' });
                         }
                     });
-                    res.redirect('/votar/porcentajeVotos');
+                    res.redirect('/estadisticas');
                 }
             });
         }
-    });
-});
-
-/* GET porcentaje de votos por candidato */
-router.get('/porcentajeVotos', function(req, res, next){
-    var totalVotos = 0
-    Candidato.find({}, null, { sort:{ cantidadVotos:"desc" } }, function(err, candidatos){
-        if(err != null){
-            res.status(400).send(new Error("Error: " + err.message));
-        }
-        if(candidatos == null){
-            res.status(404).send(new Error("No hay candidatos..."));
-        }
-        else {
-            candidatos.forEach((item) => {
-                totalVotos = totalVotos + parseFloat(item.cantidadVotos)
-            });
-        }
-        res.render('porcentajeVotos', { title: 'Elecciones', candidatos:candidatos, totalVotos: totalVotos });
     });
 });
 

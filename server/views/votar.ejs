@@ -1,4 +1,7 @@
 <% include header %>
+<script>
+    $('#nav-votar').addClass('active');
+</script>
 <div class="row justify-content-center h-100 mt-5">
     <div class="col-md-6 col-sm-12">
         <div class="card mt-md-5">
@@ -13,7 +16,6 @@
                     <p id="error"><%= locals.error %></p>
                 </div>
                 <form class="text-center border border-light p-5" action="/votar" method="POST">
-
                     <input type="text" id="nombre" name="nombre" class="form-control mb-4 disableButton" placeholder="Nombre" minlength="2" onkeypress="return lettersOnly()" required>
                     <input type="text" id="apellido" name="apellido" class="form-control mb-4 disableButton" placeholder="Apellido" onkeypress="return lettersOnly()" minlength="2" required>
 

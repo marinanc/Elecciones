@@ -1,5 +1,10 @@
 <% include header %>
 <div class="container mt-5">
+  <div class="card mt-md-5">
+    <div class="card-header bg-light text-center">
+      <strong>ELIJA UN CANDIDATO</strong>
+    </div>
+    <div class="card-body">
   <div class="alert alert-danger 
     <% if(!locals.error){ %>
       d-none
@@ -16,14 +21,17 @@
               <div class="card text-center card-input" id="card-candidato">
                 <div class="row ">
                   <div class="col-md-4">
-                      <img class="img-candidato" src="<%=item.imagenPartido%>">
-                    </div>
-                    <div class="col-md-8 px-3 align-items-center d-flex justify-content-center">
+                      <img class="img-candidato" style="width: 100%;" src="<%=item.imagenPartido%>">
+                  </div>
+                  <div class="col-md-6 px-3 align-items-center d-flex justify-content-center">
                       <div class="card-block px-3">
-                        <h4 class="card-title"><%=item.nombrePartido%></h4>
-                        <p class="card-text"><%=item.nombreCandidato%></p>                   
+                        <h4 class="card-title" style="text-transform: uppercase;"><%=item.nombrePartido%></h4>
+                        <h5 class="card-text">Candidato: <%=item.nombreCandidato%></h5>            
                       </div>
-                    </div>
+                  </div>
+                  <div class="col-md-2 align-items-center" name="div-check" id="div-check">
+                    <i class="far fa-check-circle" style="font-size:48px;" name="icon-check" id="icon-check"></i>
+                  </div>
                   </div>
                 </div>
             </label>
@@ -33,7 +41,7 @@
       <input type="text" id="dni" name="dni" class="d-none" value="<%= dni %>">
       <!-- Botón votar -->
       <div class="container col-md-8 col-sm-12 mb-5">
-        <button class="btn btn-info btn-block" type="button" data-toggle="modal" data-target="#exampleModal">VOTAR</button>
+        <button class="btn btn-info btn-block" type="button" data-toggle="modal" data-target="#exampleModal" id="submit-candidato" disabled="disabled">VOTAR</button>
         <button class="btn btn-danger btn-block" type="reset">CANCELAR</button>
     </div>
 
@@ -58,6 +66,8 @@
       </div>
     </div>
   </form>
+    </div>
+  </div>
 </div>
 
 <% include footer %>

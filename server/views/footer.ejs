@@ -32,6 +32,10 @@
             else
                 return false;
         };
+
+        $("input:radio").change(function () {
+            $("#submit-candidato").prop("disabled", false);
+        });
     </script>
 </body>
 </html>

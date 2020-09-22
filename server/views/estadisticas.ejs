@@ -30,7 +30,6 @@
                 <div class="card-block px-3 col-md-12">
                   <h4 class="card-title" style="text-transform: uppercase;"><%=item.nombrePartido%></h4>
                   <h5 class="card-text">Candidato: <%=item.nombreCandidato%></h5>
-                  <!-- <a href="#" class="btn btn-primary">Read More</a> -->
                   <div class="progress" style="height: 35px;">
                     <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="<%=item.cantidadVotos * 100 / totalVotos %>" aria-valuemin="0" aria-valuemax="100" id="progressBarCandidato" style="width: <%=item.cantidadVotos * 100 / totalVotos %>%; font-size: 15px"><%=(item.cantidadVotos * 100 / totalVotos).toFixed(2) %> %</div>
                   </div>
